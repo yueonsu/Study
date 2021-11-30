@@ -1,0 +1,26 @@
+CREATE TABLE s_user(
+   iuser INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+   uid VARCHAR(20) UNIQUE NOT NULL,
+   upw VARCHAR(50) NOT NULL,
+   nm VARCHAR(5) NOT NULL,
+   gender INT CHECK(gender IN (0, 1)),
+   rdt DATETIME DEFAULT NOW()
+);
+
+CREATE TABLE t_shop (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	writer INT UNSIGNED NOT NULL,
+	FOREIGN KEY (writer) REFERENCES s_user(iuser),
+	rdt DATETIME DEFAULT now(),
+	mdt DATETIME DEFAULT NOW(),
+	contents VARCHAR(2000),
+	category CHAR(50),
+	price INT NOT null
+);
+
+INSERT INTO t_shop (title, writer, contents, category, price) VALUES ('만년필', 1, '시간을 거스르는 명품 만년필', '문구', 150000);
+INSERT INTO t_shop (title, writer, contents, category, price) VALUES ('[제주특산] 서귀포 감귤', 1, '맛있는 귤~ 맛있는 귤~ 맛있는 귤~맛있는 귤~ 맛있는 귤~ 맛있는 귤~', '식품', 28000);
+INSERT INTO t_shop (title, writer, contents, category, price) VALUES ('존슨즈 베이비로션 2개', 1, '누구나 다 아는 아기도 바르는 순한 바디로션', '화장품', 19000);
+
+INSERT INTO s_user (uid, upw, nm, gender) VALUES ('asd', 'asd', '홍길동', 1);
