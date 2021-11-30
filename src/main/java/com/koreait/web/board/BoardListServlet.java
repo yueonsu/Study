@@ -18,7 +18,7 @@ import java.util.List;
 public class BoardListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        int recordCnt = 10;
+        int recordCnt = 5;
         int page = MyUtils.getParameterInt(req, "page", 1);
         BoardPageVO param = new BoardPageVO();
         param.setRecordCnt(recordCnt);
